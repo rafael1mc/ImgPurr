@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:id="@+id/constraintLayoutParent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".screen.imgur.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewImages"
