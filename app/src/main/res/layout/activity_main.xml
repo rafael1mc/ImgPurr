@@ -15,7 +15,7 @@
         android:requiresFadingEdge="vertical"
         tools:itemCount="10"
         tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        tools:listitem=""
+        tools:listitem="@layout/list_item_image"
         tools:spanCount="4" />
 
     <ProgressBar
