@@ -3,16 +3,81 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/constraintLayoutParent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewImages"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdgeLength="50dp"
+        android:requiresFadingEdge="vertical"
+        tools:itemCount="10"
+        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:listitem=""
+        tools:spanCount="4" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/groupError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="textViewErrorTitle,textViewErrorMessage,materialButtonRetry"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textViewErrorTitle"
+        style="@style/ImgPurr.TextStyle.ErrorTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/something_went_wrong"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@id/textViewErrorMessage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/textViewErrorMessage"
+        style="@style/ImgPurr.TextStyle.ErrorMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@id/materialButtonRetry"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewErrorTitle"
+        tools:text="Error description." />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/materialButtonRetry"
+        style="@style/ImgPurr.MaterialButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/retry"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewErrorMessage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
