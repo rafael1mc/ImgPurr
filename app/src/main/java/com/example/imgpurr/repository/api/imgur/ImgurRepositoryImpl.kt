@@ -4,7 +4,9 @@ import com.example.imgpurr.repository.BaseRepository
 import com.example.imgpurr.repository.RetrofitBuilder
 import com.example.imgpurr.repository.entity.GallerySearchResponseModel
 
-class ImgurRepositoryImpl : BaseRepository(), ImgurRepository {
+class ImgurRepositoryImpl(
+    private val retrofitBuilder: RetrofitBuilder
+) : BaseRepository(), ImgurRepository {
 
     override suspend fun searchImages(
         page: Int,
@@ -12,7 +14,7 @@ class ImgurRepositoryImpl : BaseRepository(), ImgurRepository {
     ): Result<GallerySearchResponseModel> {
 
         return handleResponse {
-            RetrofitBuilder()
+            retrofitBuilder
                 .createService(ImgurAPI::class.java)
                 .searchPhoto(page, search)
         }

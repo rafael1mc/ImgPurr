@@ -1,6 +1,7 @@
 package com.example.imgpurr
 
 import android.app.Application
+import com.example.imgpurr.di.commonsModule
 import com.example.imgpurr.di.repositoriesModule
 import com.example.imgpurr.di.utilsModule
 import com.example.imgpurr.di.viewModelsModule
@@ -15,7 +16,8 @@ class App : Application() {
         val myModules = listOf(
             viewModelsModule,
             repositoriesModule,
-            utilsModule
+            utilsModule,
+            commonsModule
         )
         startKoin {
             androidContext(this@App)
